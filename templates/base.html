@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Yangiliklar{% endblock title %}</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Yangiliklar Portali" name="keywords">
+        <meta content="Eng so'nggi mahalliy, xorijiy va texnologiya yangiliklari" name="description">
+
+        <!-- Favicon -->
+        <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+        <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+        <link href="{% static 'css/slick-theme.css' %}" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Top Header Start -->
+        <div class="top-header bg-light shadow-sm">
+            <div class="container">
+                <div class="row align-items-center py-2">
+                    <div class="col-lg-3 col-md-4">
+                        <div class="logo">
+                            <a href="{% url 'bosh_sahifa' %}">
+                                <img src="{% static 'images/logo.png' %}" alt="Logo" class="img-fluid" style="max-height: 50px;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4">
+                        <form class="search-form" method="GET" action="{% url 'qidiruv' %}">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Qidiruv..." name="q">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 col-md-4 text-right">
+                        <div class="social">
+                            <a href="https://www.linkedin.com/in/zuhra-jozilova-807754312" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/sevimlikinolar" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="https://youtube.com/@zuxrajozilova" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Header End -->
+
+        <!-- Header Start -->
+        <div class="header sticky-top shadow-sm">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+                    <a href="#" class="navbar-brand d-md-none">MENU</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav mx-auto">
+                            <a href="{% url 'bosh_sahifa' %}" class="nav-item nav-link active">Barchasi</a>
+                            <a href="{% url 'mahalliy_add' %}" class="nav-item nav-link">Mahalliy</a>
+                            <a href="{% url 'sport_add' %}" class="nav-item nav-link">Sport</a>
+                            <a href="{% url 'xorij_add' %}" class="nav-item nav-link">Xorij</a>
+                            <a href="{% url 'texnologiya_add' %}" class="nav-item nav-link">Texnologiya</a>
+                            <a href="{% url 'contact_add' %}" class="nav-item nav-link">Aloqa</a>
+                            <a href="{% url 'yangilik_qoshish' %}" class="nav-item nav-link">Yangilik qo‘shish</a>
+                            <a href="{% url 'kategoriy_add' %}" class="nav-item nav-link">Kategoriya qo‘shish</a>
+                            <!-- Authentication Links -->
+                            {% if user.is_authenticated %}
+                                <a href="#" class="nav-item nav-link">Salom, {{ user.username }}</a>
+                                <a href="{% url 'logout' %}" class="nav-item nav-link">Chiqish</a>
+                            {% else %}
+                                <a href="{% url 'login' %}" class="nav-item nav-link">Kirish</a>
+                                <a href="{% url 'register' %}" class="nav-item nav-link">Ro‘yxatdan o‘tish</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- Main Content -->
+        {% block content %}
+        {% endblock content %}
+
+        <!-- Footer Start -->
+        <div class="footer bg-dark text-light">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="footer-widget">
+                            <h3 class="title mb-4">Foydali Havolalar</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-light">Pellentesque</a></li>
+                                <li><a href="#" class="text-light">Aliquam</a></li>
+                                <li><a href="#" class="text-light">Fusce placerat</a></li>
+                                <li><a href="#" class="text-light">Nulla hendrerit</a></li>
+                                <li><a href="#" class="text-light">Maecenas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="footer-widget">
+                            <h3 class="title mb-4">Tez Havolalar</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-light">Posuere egestas</a></li>
+                                <li><a href="#" class="text-light">Sollicitudin</a></li>
+                                <li><a href="#" class="text-light">Luctus non</a></li>
+                                <li><a href="#" class="text-light">Duis tincidunt</a></li>
+                                <li><a href="#" class="text-light">Elementum</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="footer-widget">
+                            <h3 class="title mb-4">Aloqa</h3>
+                            <div class="contact-info">
+                                <p><i class="fa fa-map-marker-alt mr-2"></i>Samarqand shahri, Ibn Sino ko‘chasi</p>
+                                <p><i class="fa fa-envelope mr-2"></i>email@zuxrajozilova8899.com</p>
+                                <p><i class="fa fa-phone-alt mr-2"></i>+998 94 303 33 33</p>
+                                <div class="social mt-3">
+                                    <a href="https://www.linkedin.com/in/zuhra-jozilova-807754312" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                                    <a href="https://www.instagram.com/sevimlikinolar" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://youtube.com/@zuxrajozilova" class="social-icon"><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="footer-widget">
+                            <h3 class="title mb-4">Yangiliklarga obuna</h3>
+                            <div class="newsletter">
+                                <p>
+                                    Eng so‘nggi yangiliklardan xabardor bo‘ling!
+                                </p>
+                                <form>
+                                    <input class="form-control" type="email" placeholder="Emailingizni kiriting">
+                                    <button class="btn btn-primary mt-2 w-100">Obuna bo‘lish</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom bg-secondary text-light">
+            <div class="container">
+                <div class="row py-3">
+                    <div class="col-md-6 copyright">
+                        <p>&copy; 2025 <a href="#" class="text-light">Yangiliklar Portali</a>. Barcha huquqlar himoyalangan.</p>
+                    </div>
+                    <div class="col-md-6 template-by text-md-right">
+                        <p>Dizayn: <a href="https://htmlcodex.com" class="text-light">HTML Codex</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'js/easing.min.js' %}"></script>
+        <script src="{% static 'js/slick.min.js' %}"></script>
+
+        <!-- Template Javascript -->
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>
+
+
+
+

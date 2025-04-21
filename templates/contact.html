@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Bosh sahifa {% endblock title%}
+{% block content %}
+
+
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Contact</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+
+
+        <!-- Contact Start -->
+        <div class="contact">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        {% if error %}
+                          <div class="alert alert-danger">{{ error }}</div>
+                        {% endif %}
+                        {% if success %}
+                          <div class="alert alert-danger">{{ success }}</div>
+                        {% endif %}
+                        <div class="form">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input type="text" class="form-control" placeholder="Your Name" name="full_name" />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="email" class="form-control" placeholder="Your Email" name="email"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Subject" name="supject" />
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="5" placeholder="Message" name="message"></textarea>
+                                </div>
+                                <div><button class="btn" type="submit">Send Message</button></div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5837.640890824452!2d66.92652719999998!3d39.677634499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d19d54b324835%3A0xdf389d78adb91db2!2sIT%20TAT!5e1!3m2!1sen!2s!4v1734167692086!5m2!1sen!2s" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-info">
+                            <h3>Get in Touch</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus.
+                            </p>
+                            <h4><i class="fa fa-map-marker"></i>Samarqand shahri Ibn Sino ko`chasi </h4>
+                            <h4><i class="fa fa-envelope"></i>jozilovazuxra8899@gmail.com</h4>
+                            <h4><i class="fa fa-phone"></i>+998 94 303 33 33</h4>
+                            <div class="social">
+                                <a href="https://www.linkedin.com/in/zuhra-jozilova-807754312?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+
+                                <a href="https://www.instagram.com/sevimlikinolar/profilecard/?igsh=YW85YWV0dnhsOHp0"><i class="fab fa-instagram"></i></a>
+                                <a href="https://youtube.com/@zuxrajozilova?si=PW1-_NIqr1T1HEcV"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+{% endblock content %}
+
+
+
+

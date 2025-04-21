@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Yangilik Qo‘shish{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Yangilik Qo‘shish</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        {{ form.as_p }}
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-block">Qo‘shish</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.card {
+    border-radius: 10px;
+}
+.card-header {
+    border-radius: 10px 10px 0 0;
+}
+form p {
+    margin-bottom: 1.5rem;
+}
+form label {
+    font-weight: 500;
+    color: #333;
+}
+form input, form textarea, form select {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    width: 100%;
+    padding: 8px;
+}
+form input:focus, form textarea:focus, form select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+.btn-primary {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+</style>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Mahalliy Xabarlar {% endblock title %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Mahalliy Xabarlar</h1>
+    <div class="row">
+        {% for new in mahaliy_news %}
+        <div class="col-md-4 mb-4">
+            <div class="card news-card h-100 shadow-sm">
+                {% if new.image %}
+                <img src="{{ new.image.url }}" class="card-img-top" alt="{{ new.title }}">
+                {% else %}
+                <div class="no-image text-center py-4">
+                    <span>Rasm mavjud emas</span>
+                </div>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ new.title }}</h5>
+                    <p class="card-text text-muted">{{ new.description|truncatewords:20 }}</p>
+                    <a href="{% url 'batafsil' new.slug %}" class="btn btn-primary btn-sm">Batafsil</a>
+                </div>
+                <div class="card-footer text-muted small">
+                    {{ new.publish_time|date:"d-m-Y H:i" }}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p class="text-muted">Hozircha yangiliklar mavjud emas.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

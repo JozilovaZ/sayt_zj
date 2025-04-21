@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Bosh sahifa {% endblock title%}
+
+{% block content %}
+
+        <!-- Top News Start-->
+        <div class="top-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 tn-left">
+                        <div class="tn-img">
+                            <img src="{{ latest_new.image.url }}" />
+                            <div class="tn-content">
+                                <div class="tn-content-inner">
+                                    <a class="tn-date" href="{% url 'batafsil' latest_new.slug %}"><i class="far fa-clock"></i>{{ latest_new.publish_time }}</a>
+                                    <a class="tn-title" href="{% url 'batafsil' latest_new.slug %}">{{ latest_new.title }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 tn-right">
+                        <div class="row">
+                            {% for new in latest_news %}
+                            <div class="col-md-6">
+                                <div class="tn-img">
+                                    <img src="{{ new.image.url }}" />
+                                    <div class="tn-content">
+                                        <div class="tn-content-inner">
+                                            <a class="tn-date" href="{% url 'batafsil' new.slug %}"><i class="far fa-clock"></i>{{ new.publish_time }}</a>
+                                            <a class="tn-title" href="{% url 'batafsil' new.slug %}">{{ new.title }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top News End-->
+
+
+        <!-- Category News Start-->
+        <div class="cat-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-align-justify"></i>Sport</h2>
+                        <div class="row cn-slider">
+                            {% for sport in sport_news %}
+                                <div class="col-md-6">
+                                    <div class="cn-img">
+                                        <img src="{{ sport.image.url }}" />
+                                        <div class="cn-content">
+                                            <div class="cn-content-inner">
+                                                <a class="cn-date" href="{% url 'batafsil' sport.slug %}"><i class="far fa-clock"></i>{{ sport.publish_time }}</a>
+                                                <a class="cn-title" href="{% url 'batafsil' sport.slug %} ">{{ sport.title }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-align-justify"></i>Texnologiya</h2>
+                        <div class="row cn-slider">
+                            {% for texnologiya in teno_news %}
+                            <div class="col-md-6">
+                                <div class="cn-img">
+                                    <img src="{{ texnologiya.image.url }}" />
+                                    <div class="cn-content">
+                                        <div class="cn-content-inner">
+                                            <a class="cn-date" href="{% url 'batafsil' texnologiya.slug %}"><i class="far fa-clock"></i>{{texnologiya.publish_time}}</a>
+                                            <a class="cn-title" href="{% url 'batafsil' texnologiya.slug %}">{{texnologiya.title}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Category News End-->
+
+
+        <!-- Category News Start-->
+        <div class="cat-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-align-justify"></i>Mahalliy</h2>
+                        <div class="row cn-slider">
+                            {% for mahalliy in mahaliy_news %}
+                            <div class="col-md-6">
+                                <div class="cn-img">
+                                    <img src="{{ mahalliy.image.url }}" />
+                                    <div class="cn-content">
+                                        <div class="cn-content-inner">
+                                            <a class="cn-date" href="{% url 'batafsil' mahalliy.slug %}"><i class="far fa-clock"></i>{{mahalliy.publish_time}}</a>
+                                            <a class="cn-title" href="{% url 'batafsil' mahalliy.slug %}">{{mahalliy.title}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-align-justify"></i>Xorij</h2>
+                        <div class="row cn-slider">
+                            {% for xorij in xorij_news %}
+                            <div class="col-md-6">
+                                <div class="cn-img">
+                                    <img src="{{ xorij.image.url }}" />
+                                    <div class="cn-content">
+                                        <div class="cn-content-inner">
+                                            <a class="cn-date" href="{% url 'batafsil' xorij.slug %}"><i class="far fa-clock"></i>{{xorij.publish_time}}</a>
+                                            <a class="cn-title" href="{% url 'batafsil' xorij.slug %}">{{xorij.title}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Category News End-->
+
+
+
+{% endblock content %}
+

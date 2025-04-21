@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Texnologiya xabarlar {% endblock title%}
+
+{% block content %}
+<div class="container my-5">
+
+
+
+    <div class="row">
+        {% for new in texnologiya_news %}
+        <div class="col-md-4">
+            <div class="card h-100">
+                {% if new.image %}
+                <img src="{{new.image.url}}" class="card-img-top" alt="{{new.title}}">
+                {% else %}
+                <h5>rasm yo`q</h5>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{new.title }}</h5>
+                    <a href="{% url 'batafsil' new.slug %}" class="btn btn-primary btn-sm">Batafsil</a>
+                </div>
+                <div class="card-footer text-muted">
+                    {{new.publish_time|date:"d-m-Y H:i"}}
+                </div>
+            </div>
+        </div>
+
+
+        {% endfor %}
+    </div>
+
+
+</div>
+
+
+{% endblock content %}
